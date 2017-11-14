@@ -1,5 +1,4 @@
 import sys
-from matplotlib.mathtext import ship
 import random
 import pygame
 from pygame.locals import *
@@ -10,7 +9,7 @@ from star import Star
 from spacerock import Spacerock
 from spacerock2 import Spacerock2
 from spacerock3 import Spacerock3
-from enemyship import Enemyship
+#from enemyship import Enemyship
 
 class Asteroids( Game ):
 
@@ -24,35 +23,35 @@ class Asteroids( Game ):
 
         super().__init__( name, width, height )
 
-        self.ship = Ship( 320, 240, 0)  #  TODO: should create a Ship object here
+        self.ship = Ship( 320, 200, 0)  #  TODO: should create a Ship object here
 
 
         self.asteroids=[]          # TODO: should create asteroids
 
         for i in range(8):
 
-            self.asteroids.append(Spacerock(random.randrange(640), random.randrange(480),random.randrange(4,8)))
+            self.asteroids.append(Spacerock(random.randrange(800), random.randrange(600),random.randrange(4,8)))
 
-        for i in range(4):
+        for i in range(6):
 
             self.asteroids.append(Spacerock2(random.randrange(640), random.randrange(480),random.randrange(4,8)))
 
-        for i in range(2):
+        for i in range(4):
 
-            self.asteroids.append(Spacerock3(random.randrange(640), random.randrange(480),random.randrange(4,8)))
+            self.asteroids.append(Spacerock3(random.randrange(320), random.randrange(480),random.randrange(4,8)))
 
       
         self.stars=[]     # TODO: should create stars
 
         for i in range(30):
 
-            self.stars.append(Star(random.randrange(640), random.randrange(480),random.randrange(1,3), 0))
+            self.stars.append(Star(random.randrange(800), random.randrange(600),random.randrange(1,3), 0))
 
         self.bullets =[]
 
         self.enemyship=[]
 
-        self.enemyship = Enemyship(640, 360, 0)
+       # self.enemyship = Enemyship(640, 360, 0)
         
     def handle_input(self):
         
@@ -62,15 +61,15 @@ class Asteroids( Game ):
         
         if keys_pressed[K_LEFT] and self.ship:
            
-            self.ship.rotate(-5)
+            self.ship.rotate(-2)
             
         if keys_pressed[K_RIGHT] and self.ship:
 
-            self.ship.rotate(5)
+            self.ship.rotate(2)
             
         if keys_pressed[K_UP] and self.ship:
 
-            self.ship.accelerate(1.0)
+            self.ship.accelerate(0.1)
            
         if keys_pressed[K_DOWN] and self.ship:
 
@@ -85,6 +84,8 @@ class Asteroids( Game ):
                  
     def update_simulation(self):
 
+      
+   
         """
 
         update_simulation() causes all objects in the game to update themselves
@@ -106,15 +107,17 @@ class Asteroids( Game ):
 
             star.update( self.width, self.height )
 
+
         for bullet in self.bullets:
 
-            bullet.update( self.width, self.height )
 
+           bullet.update_bullet(self.width, self.height)
         # TODO: should probably call update on our bullet/bullets here
 
         # TODO: should probably work out how to remove a bullet when it gets old
 
         self.handle_collisions()
+
 
        
         
@@ -160,8 +163,8 @@ class Asteroids( Game ):
               if spacerock.contains(bullet.position):
                print("Target Destroyed")
                self.asteroids.remove(spacerock)
-
-
+               
+              
         for spacerock in self.asteroids:
             if isinstance( spacerock, Spacerock ):
                
@@ -189,18 +192,14 @@ class Asteroids( Game ):
         for spacerock3 in self.asteroids:
             if isinstance( spacerock3, Spacerock3 ):
 
-
               if self.ship and self.ship.collide(spacerock3):
                 print("Ship Destroyed")
                 self.ship.health = self.ship.health - 100
                 self.asteroids.remove(spacerock3)
-
+              
         if self.ship and self.ship.health <= 0:
             self.ship = None
-                     
 
-       
-                
         """
 
         handle_collisions() should check:
