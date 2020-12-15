@@ -1,12 +1,9 @@
 from polygon import Polygon
 from point import Point
 
-
-
 class Ship(Polygon):
 
     def __init__(self,name, width, height):
-
         
          super().__init__( points=[ Point(0,0), Point(-10,10), Point(15,0), Point(-10,-10) ] )
 
@@ -32,9 +29,7 @@ class Ship(Polygon):
         else:
             print .self.name, "Target Miss!"
 
-
     def hit(self):
-
         self.armor -= 2
         print .self.name, "Hit"
         if self.armor <= 0:
@@ -46,12 +41,5 @@ class Ship(Polygon):
              self.explode()
 
     def explode(self):
-
         self.alive = False
         print .self.name, "Ship Destroyed!"
-
-            
-
-    
-
-
