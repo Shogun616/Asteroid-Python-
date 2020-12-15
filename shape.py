@@ -33,7 +33,6 @@ class Shape(ABC):
         self.position.y %= height
         self.rotation %= 360
 
-
     def accelerate(self, acceleration):
         """
         Cause the object to start moving by giving it a little push
@@ -63,4 +62,3 @@ class Shape(ABC):
         :return: True or False
         """
         return False
-
