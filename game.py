@@ -58,10 +58,3 @@ class Game( ABC ):
     @abstractmethod
     def render_objects(self):
         pass
-
-
-
-
-
-
-
