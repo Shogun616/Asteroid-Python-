@@ -4,7 +4,6 @@ import pygame
 from shape import Shape
 from point import Point
 
-
 class Polygon(Shape):
     def __init__(self, points=[], x=0, y=0, rotation=0):
         """ points = all coordinates for the lines in the polygon
@@ -15,7 +14,6 @@ class Polygon(Shape):
         # Make our own copy of all the points that make up this polygon
         self.points = list(points)
 
-
     def draw(self, screen):
         # Since polygons can be rotated, we need to "translate" all the points
         # by the amount of rotation before we draw them:
@@ -25,7 +23,6 @@ class Polygon(Shape):
         for p in points:
             vectors.append( (p.x, p.y) )
         pygame.draw.polygon( screen,  (255,255,255), vectors, 1 )
-
 
     def getRotatedPoints(self):
         """
@@ -47,7 +44,6 @@ class Polygon(Shape):
             rotated_points[i].y = y
         return rotated_points
 
-
     def findArea(self):
         """
         Compute the area of the polygon using some fun mathematics.
@@ -63,7 +59,6 @@ class Polygon(Shape):
             j=(j+1)%len(self.points)
 
         return math.fabs( sum/2 )
-
 
     def findCenter(self):
         """
@@ -83,7 +78,6 @@ class Polygon(Shape):
             j=(j+1)%len(self.points)
         area = self.findArea()
         return Point( math.fabs( sum.x/(6*area)), math.fabs( sum.y/(6*area)) )
-
 
     def contains(self, point):
         """
@@ -107,7 +101,6 @@ class Polygon(Shape):
 
         return crossingNumber % 2 == 1
 
-
     def collide(self, poly):
         """
         We override collide() to test if two polygons overlapp each other or not
@@ -121,5 +114,4 @@ class Polygon(Shape):
         for p in points:
             if self.contains( p ):
                 return True
-
         return False
