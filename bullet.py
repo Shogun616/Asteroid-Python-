@@ -18,20 +18,4 @@ class Bullet(Circle):
        #  rotation is modified by "angular_velocity" - how much it should rotate each frame
 
        self.position += self.pull
-
        self.rotation += self.angular_velocity
-                        
-                        
-   
-
-
-
-
-
-
-        
-
-
-    
-
-
