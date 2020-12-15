@@ -1,10 +1,8 @@
-
 import math
 import pygame
 
 from point import Point
 from shape import Shape
-
 
 class Circle(Shape):
     """
@@ -26,4 +24,3 @@ class Circle(Shape):
         pointRelativeToCircle = point - self.position
         pointDistanceFromCircleOrigin = pointRelativeToCircle.distanceFromOrigin()
         return pointDistanceFromCircleOrigin <= self.radius
-
