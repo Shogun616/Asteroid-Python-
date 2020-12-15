@@ -80,12 +80,9 @@ class Asteroids( Game ):
             self.bullets.append(Bullet(self.ship.position.x,self.ship.position.y,self.ship.rotation))
 
             # TODO: should create a bullet when the user fires
-
-                 
+       
     def update_simulation(self):
-
-      
-   
+        
         """
 
         update_simulation() causes all objects in the game to update themselves
@@ -93,7 +90,6 @@ class Asteroids( Game ):
         """
 
         super().update_simulation()
-
 
         if self.ship:
 
@@ -107,9 +103,7 @@ class Asteroids( Game ):
 
             star.update( self.width, self.height )
 
-
         for bullet in self.bullets:
-
 
            bullet.update_bullet(self.width, self.height)
         # TODO: should probably call update on our bullet/bullets here
@@ -118,9 +112,6 @@ class Asteroids( Game ):
 
         self.handle_collisions()
 
-
-       
-        
     def render_objects(self):
 
         """
@@ -155,7 +146,6 @@ class Asteroids( Game ):
 
             bullet.draw( self.screen )
 
-
     def handle_collisions(self):
 
         for bullet in self.bullets:
@@ -175,8 +165,7 @@ class Asteroids( Game ):
                   
         if self.ship and self.ship.health <= 0:
             self.ship = None
-                    
-        
+            
         for spacerock2 in self.asteroids:
             if isinstance( spacerock2, Spacerock2 ):
 
@@ -188,7 +177,6 @@ class Asteroids( Game ):
         if self.ship and self.ship.health <= 0:
              self.ship = None
 
-              
         for spacerock3 in self.asteroids:
             if isinstance( spacerock3, Spacerock3 ):
 
@@ -213,9 +201,5 @@ class Asteroids( Game ):
         """
 
         # TODO: implement collission detection,
-
         #       using the collission detection methods in all of the shapes
-
         pass
-
-
