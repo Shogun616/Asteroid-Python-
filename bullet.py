@@ -9,8 +9,7 @@ class Bullet(Circle):
         self.accelerate(5.0)
 
     def update_bullet(self, width, height):
-
-
+        
        # Update the position and orientation of the shape
 
        #  position is modified by "pull" - how much it should move each frame
